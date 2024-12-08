@@ -13,7 +13,15 @@ document.getElementById('userForm').addEventListener('submit', function(event) {
       },
       body: JSON.stringify({ nome: name, email: email })
     })
-    .then(response => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        // Se a resposta não for OK, converta para JSON e lance um erro
+        return response.json().then((error) => {
+          throw new Error(error.error); // "error.error" vem da mensagem do backend
+        });
+      }
+      return response.json(); // Caso contrário, continue com o fluxo
+    })
     .then(() => {
       // Limpar os campos do formulário
       document.getElementById('name').value = '';

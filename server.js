@@ -2,15 +2,13 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
 
-// Crie a instância do aplicativo Express
 const app = express();
 const port = 3000;
 
-// Middleware para lidar com JSON
 app.use(bodyParser.json());
 app.use(express.static('public')); // Servir arquivos estáticos (HTML, CSS, JS)
 
-// Conectar ao banco de dados SQLite
+//Conectar ao banco de dados SQLite
 const db = new sqlite3.Database('users.db', (err) => {
   if (err) {
     console.error('Erro ao conectar ao banco de dados:', err);
@@ -28,7 +26,7 @@ db.run(`
   )
 `);
 
-// Rota para pegar todos os usuários
+
 app.get('/users', (req, res) => {
   db.all('SELECT * FROM users', (err, rows) => {
     if (err) {
@@ -39,21 +37,31 @@ app.get('/users', (req, res) => {
   });
 });
 
-// Rota para adicionar um novo usuário
 app.post('/users', (req, res) => {
   const { nome, email } = req.body;
-  db.run(
-    'INSERT INTO users (nome, email) VALUES (?, ?)',
-    [nome, email],
-    function (err) {
-      if (err) {
-        res.status(500).json({ error: err.message });
-      } else {
-        res.status(201).json({ id: this.lastID, nome, email });
-      }
+
+ 
+  db.get('SELECT * FROM users WHERE nome = ? OR email = ?', [nome, email], (err, row) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao verificar o banco de dados.' });
+    } else if (row) {
+      res.status(400).json({ error: 'Nome ou e-mail já está cadastrado.' });
+    } else {
+      db.run(
+        'INSERT INTO users (nome, email) VALUES (?, ?)',
+        [nome, email],
+        function (err) {
+          if (err) {
+            res.status(500).json({ error: 'Erro ao inserir no banco de dados.' });
+          } else {
+            res.status(201).json({ id: this.lastID, nome, email });
+          }
+        }
+      );
     }
-  );
+  });
 });
+
 
 // Iniciar o servidor
 app.listen(port, () => {

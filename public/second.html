@@ -19,6 +19,12 @@ The href attribute of <a> specifies the URL of the page the link goes to
     <ins> - Inserted text
     <sub> - Subscript text
     <sup> - Superscript text
+
+        for links: target atribute
+        _self - Default. Opens the document in the same window/tab as it was clicked
+        _blank - Opens the document in a new window or tab
+        _parent - Opens the document in the parent frame
+        _top - Opens the document in the full body of the window
 -->
 <html>
 <head lang="pt-br"> 
@@ -26,13 +32,36 @@ The href attribute of <a> specifies the URL of the page the link goes to
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
     <title>Segunda pagina</title>
     <link rel="stylesheet" href = "styleSecond.css">
+    <link rel="stylesheet" href="style3.css">
+    <style>
+        div.mycontainer {
+          width:100%;
+          overflow:auto;
+        }
+        div.mycontainer div {
+          width:33%;  
+          float:left;
+        }
+        </style>
 </head>
 <body> 
+  <div class="barra-superior">
+    <a href="index.html" class="link">Início</a>
+    <a href="second.html" class="link">Página 2</a>
+    <a href="third.html" class="link">Página 3</a>
+  </div>
     <a href="https://www.w3schools.com">clica aqui</a>
     <h1>Segunda pagina </h1>
     <p> Esse é um parágrafo <br> Depois do br quebra a linha </p>
      <h4>Botando um imagem : </h4>
      <img src="res/imagem.png" width="200" height="200" alt="imagem">
     <p title="passou"> passa o mouse por cima</p>
+    <a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a>
+    <!-- Tentando fazer uma div que seja horizontal-->
+     <div class="mycontainer"> 
+        <div >div1</div>
+        <div >div2</div>
+        <div >div3</div>
+     </div>
 </body>
 </html>
