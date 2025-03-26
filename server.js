@@ -62,6 +62,15 @@ app.post('/users', (req, res) => {
   });
 });
 
+// Rota para resetar o banco de dados (apagar todos os usuários)
+app.delete('/reset', (req, res) => {
+  db.run('DELETE FROM users', function(err) {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao resetar o banco de dados' });
+    }
+    res.status(200).json({ message: 'Banco de dados resetado com sucesso' });
+  });
+});
 
 // Iniciar o servidor
 app.listen(port, () => {

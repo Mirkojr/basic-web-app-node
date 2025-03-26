@@ -1,67 +1,108 @@
 <!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segunda página</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleNavBar.css">
 
-<!-- 
-The href attribute of <a> specifies the URL of the page the link goes to
-    The src attribute of <img> specifies the path to the image to be displayed
-    The width and height attributes of <img> provide size information for images
-    The alt attribute of <img> provides an alternate text for an image
-    The style attribute is used to add styles to an element, such as color, font, size, and more
-    The lang attribute of the <html> tag declares the language of the Web page
-    The title attribute defines some extra information about an element
-
-    <b> - Bold text
-    <strong> - Important text
-    <i> - Italic text
-    <em> - Emphasized text
-    <mark> - Marked text
-    <small> - Smaller text
-    <del> - Deleted text
-    <ins> - Inserted text
-    <sub> - Subscript text
-    <sup> - Superscript text
-
-        for links: target atribute
-        _self - Default. Opens the document in the same window/tab as it was clicked
-        _blank - Opens the document in a new window or tab
-        _parent - Opens the document in the parent frame
-        _top - Opens the document in the full body of the window
--->
-<html>
-<head lang="pt-br"> 
-    <meta charset= "UTF-8">
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Segunda pagina</title>
-    <link rel="stylesheet" href = "styleSecond.css">
-    <link rel="stylesheet" href="style3.css">
     <style>
-        div.mycontainer {
-          width:100%;
-          overflow:auto;
-        }
-        div.mycontainer div {
-          width:33%;  
-          float:left;
-        }
-        </style>
-</head>
-<body> 
-  <div class="barra-superior">
-    <a href="index.html" class="link">Início</a>
-    <a href="second.html" class="link">Página 2</a>
-    <a href="third.html" class="link">Página 3</a>
-  </div>
-    <a href="https://www.w3schools.com">clica aqui</a>
-    <h1>Segunda pagina </h1>
-    <p> Esse é um parágrafo <br> Depois do br quebra a linha </p>
-     <h4>Botando um imagem : </h4>
-     <img src="res/imagem.png" width="200" height="200" alt="imagem">
-    <p title="passou"> passa o mouse por cima</p>
-    <a href="https://www.w3schools.com/" target="_blank">Visit W3Schools!</a>
-    <!-- Tentando fazer uma div que seja horizontal-->
-     <div class="mycontainer"> 
-        <div >div1</div>
-        <div >div2</div>
-        <div >div3</div>
-     </div>
-</body>
+      img {
+        display: block;
+        margin: 20px auto;
+        transition: all 0.3s ease-in-out;
+        border-radius: 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      /* Estilizando o container do slider */
+      .slider-container {
+        margin: 20px auto;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      /* Estilizando o slider */
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #ffffff, #0072ff);
+        outline: none;
+        opacity: 0.7;
+        transition: opacity 0.15s ease-in-out;
+      }
+
+      input[type="range"]:hover {
+        opacity: 1;
+      }
+
+      /* Estilizando o botão deslizante do slider */
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #0072ff;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        background: #0072ff;
+      }
+
+      /* Valor do slider */
+      #sliderValue {
+        font-weight: bold;
+        font-size: 18px;
+        color: #0072ff;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="index.html" class="link">Início</a>
+        <a href="index2.html" class="link">Página 2</a>
+        <a href="index3.html" class="link">Página 3</a>
+      </nav>
+    </header>
+
+    <h1>Segunda página</h1>
+    <h4>Uma imagem gerada por uma engine 3D em Java</h4>
+    
+    <!-- Slider para ajustar o tamanho da imagem -->
+    <div class="slider-container">
+      <label for="sizeSlider">Ajustar tamanho da imagem: </label>
+      <input type="range" id="sizeSlider" min="20" max="80" value="50" step="1">
+      <span id="sliderValue">50%</span>
+    </div>
+
+    <!-- Imagem -->
+    <img id="imagem" src="res/imagem.png" width="70%" height="70%" alt="Imagem gerada pela engine 3D">
+
+    <script>
+      const slider = document.getElementById('sizeSlider');
+      const imagem = document.getElementById('imagem');
+      const sliderValue = document.getElementById('sliderValue');
+
+      // Atualiza o tamanho da imagem e o valor do slider
+      slider.addEventListener('input', function() {
+        const size = slider.value;
+        imagem.style.width = size + '%';
+        imagem.style.height = size + '%';
+        sliderValue.textContent = size + '%';
+      });
+    </script>
+  </body>
 </html>

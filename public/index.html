@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Web App</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style3.css">
+  <link rel="stylesheet" href="styleNavBar.css">
 </head>
 <body>
-  <div class="barra-superior">
-    <a href="index.html" class="link">Início</a>
-    <a href="second.html" class="link">Página 2</a>
-    <a href="third.html" class="link">Página 3</a>
-  </div>
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="link">Início</a>
+      <a href="index2.html" class="link">Página 2</a>
+      <a href="index3.html" class="link">Página 3</a>
+    </nav>
+  </header>
 
   <h1>Simple Web App</h1>
+
+  <!-- Formulário para adicionar usuários -->
   <form id="userForm">
     <input type="text" id="name" placeholder="Name" required>
     <input type="email" id="email" placeholder="Email" required>
     <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
   </form>
+
+  <!-- Tabela para exibir usuários -->
   <table>
     <thead>
       <tr>
@@ -30,6 +37,6 @@
     <tbody id="userTable">
     </tbody>
   </table>
-  <script src="script.js"></script>
+  <script src="database.js"></script>
 </body>
 </html>

@@ -1,22 +1,26 @@
 {
-  "name": "nodetest",
+  "name": "basic-web-app-node",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "This is a simple web application that allows users to input their name and email, and store the data in a local SQLite database.",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mirkojr/basic-web-app-node.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mirkojr/basic-web-app-node/issues"
+  },
+  "homepage": "https://github.com/Mirkojr/basic-web-app-node#readme",
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
     "express": "^4.21.2",
     "sqlite3": "^5.1.7"
-  },
-  "devDependencies": {
-    "@types/body-parser": "^1.19.5",
-    "@types/express": "^5.0.0"
   }
 }

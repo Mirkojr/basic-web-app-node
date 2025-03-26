@@ -1,6 +1,6 @@
 # Simple Web App with SQLite
 
-This is a simple web application that allows users to input their name and email, and store the data in a local SQLite database. The application also displays the list of names and emails stored in the database on the page.
+This is a simple web application that allows users to input their name and email, and store the data in a local SQLite database. 
 
 ## Features
 
@@ -12,14 +12,12 @@ This is a simple web application that allows users to input their name and email
 ## Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: SQLite (for storing user data)
+- **Backend**: SQLite 
 
 ## Prerequisites
 
-Before running the app, make sure you have the following installed on your system:
-
-- [Node.js](https://nodejs.org/) (which includes npm)
-- [SQLite3](https://www.sqlite.org/index.html) (optional if you want to manually manage the database)
+- [Node.js](https://nodejs.org/) (which includes npm) ; Learn how to download -> https://nodejs.org/pt/download
+- [SQLite3](https://www.sqlite.org/index.html)
 
 ## Setup
 
@@ -27,3 +25,12 @@ Before running the app, make sure you have the following installed on your syste
 
    ```bash
    git clone https://github.com/Mirkojr/basic-web-app-node.git
+
+2. Install modules with npm
+  ```
+  npm install express
+  npm install sqlite3
+
+3. Run
+   ```bash
+   node server.js
